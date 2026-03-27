@@ -12,6 +12,10 @@ runs:
       with:
         repository: 'mtararujs/python-greetings'
         path: 'depl'
+    - name: test install
+      working-directory: ./depl
+      run: npm install pm2
+      shell: pwsh
     - name: Delete
       working-directory: ./depl
       run: pm2 delete greetings-app-${{inputs.env}};exit 0
