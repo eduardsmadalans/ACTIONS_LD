@@ -14,7 +14,7 @@ runs:
         path: 'depl'
     - name: test install
       working-directory: ./depl
-      run: npm install pm2
+      run: npm install -g pm2
       shell: pwsh
     - name: Delete
       working-directory: ./depl
