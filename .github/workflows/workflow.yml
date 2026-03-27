@@ -23,10 +23,14 @@ jobs:
     runs-on: windows-latest
     needs: install-pip-deps
     steps:
-    
       - uses: actions/checkout@v6
-      - name: Run a one-line script
+      - uses: ./.github/Actions/Deploy
+        with:
+          env: 'dev'
+          port: '7001'
+      - name: Deploy
         run: echo "to dev"
+        
   tests-on-dev:
     runs-on: windows-latest
     needs: deploy-to-dev
