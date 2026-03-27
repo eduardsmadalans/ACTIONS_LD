@@ -3,8 +3,6 @@ description: 'Test'
 inputs:
   env:
     required: true
-  port:
-    required: true
 runs:
   using: composite
   steps:
