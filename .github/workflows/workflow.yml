@@ -1,0 +1,82 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+
+  install-pip-deps:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - uses: actions/checkout@v6
+      - name: Run a one-line script
+        run: echo "installing deps"
+  deploy-to-dev:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - uses: actions/checkout@v6
+      - name: Run a one-line script
+        run: echo "to dev"
+  tests-on-dev:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - uses: actions/checkout@v6
+      - name: Run a one-line script
+        run: echo "test dev"
+  deploy-to-stg:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - uses: actions/checkout@v6
+      - name: Run a one-line script
+        run: echo "to stg"
+  tests-on-stg:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - uses: actions/checkout@v6
+      - name: Run a one-line script
+        run: echo "test stg"
+  deploy-to-preprod:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - uses: actions/checkout@v6
+      - name: Run a one-line script
+        run: echo "to pre"
+  tests-on-preprod:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - uses: actions/checkout@v6
+      - name: Run a one-line script
+        run: echo "test pre"
+  deploy-to-prod:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - uses: actions/checkout@v6
+      - name: Run a one-line script
+        run: echo "to prod"
+  Tests-on-prod:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - uses: actions/checkout@v6
+      - name: Run a one-line script
+        run: echo "test prod"
+
+  
+
+
+    
