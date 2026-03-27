@@ -3,6 +3,19 @@ description: 'dependencies'
 runs:
   using: composite
   steps:
-    - run: echo "test"
+    - uses: actions/checkout@v6
+      with:
+        repository: 'mtararujs/python-greetings'
+        path: 'deps'
+    - name: Install
+      working-directory: ./deps
+      run: npm install
       shell: pwsh
-
+    - name: Python
+      working-directory: ./deps
+      run: python3 -m venv venv
+      shell: pwsh
+    - name: Python
+      working-directory: ./deps
+      run: .\\venv\\bin\\python -m pip install -r requirements.txt
+      shell: pwsh
