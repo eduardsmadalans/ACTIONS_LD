@@ -1,1 +1,8 @@
+name: 'Build/Dependencies'
+description: 'dependencies'
+runs:
+  using: composite
+  steps:
+    - run: echo "test"
+      shell: pwsh
 
