@@ -16,11 +16,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v6
-        with:
-          repository: 'mtararujs/python-greetings'
-          path: 'deps'
-      - name: Run a one-line script
-        run: echo "installing deps"
+      - uses: ./.github/Actions/Build
 
         
   deploy-to-dev:
