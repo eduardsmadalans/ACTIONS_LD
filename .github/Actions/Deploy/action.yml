@@ -1,1 +1,22 @@
-
+name: 'Build/Deploy'
+description: 'Deploy'
+inputs:
+  env:
+    required: true
+  port:
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v6
+      with:
+        repository: 'mtararujs/python-greetings'
+        path: 'depl'
+    - name: Delete
+      working-directory: ./depl
+      run: pm2 delete greetings-app-${{inputs.env}} & EXIT /B 0
+      shell: pwsh
+    - name: Start
+      working-directory: ./depl
+      run: pm2 start -n greetings-app-${{inputs.env}} app.py -- -- ${{inputs.port}}
+      shell: pwsh
