@@ -1,1 +1,22 @@
-
+name: 'Build/Test'
+description: 'Test'
+inputs:
+  env:
+    required: true
+  port:
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v6
+      with:
+        repository: 'mtararujs/course-js-api-framework'
+        path: 't1'
+    - name: test install
+      working-directory: ./t1
+      run: npm install
+      shell: pwsh
+    - name: test test
+      working-directory: ./t1
+      run: npm run greetings greetings_${{inputs.env}}
+      shell: pwsh
