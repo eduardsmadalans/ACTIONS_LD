@@ -17,6 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: ./.github/Actions/Build
+      
 
         
   deploy-to-dev:
@@ -35,8 +36,10 @@ jobs:
     runs-on: windows-latest
     needs: deploy-to-dev
     steps:
-    
       - uses: actions/checkout@v6
+      - uses: ./.github/Actions/Test
+        with:
+          env: 'dev'
       - name: Run a one-line script
         run: echo "test dev"
   deploy-to-stg:
@@ -54,7 +57,10 @@ jobs:
     runs-on: windows-latest
     needs: deploy-to-stg
     steps:
-    
+      - uses: actions/checkout@v6
+      - uses: ./.github/Actions/Test
+        with:
+          env: 'stg'
       - uses: actions/checkout@v6
       - name: Run a one-line script
         run: echo "test stg"
@@ -73,7 +79,10 @@ jobs:
     runs-on: windows-latest
     needs: deploy-to-preprod
     steps:
-    
+      - uses: actions/checkout@v6
+      - uses: ./.github/Actions/Test
+        with:
+          env: 'preprod'
       - uses: actions/checkout@v6
       - name: Run a one-line script
         run: echo "test pre"
@@ -81,8 +90,10 @@ jobs:
     runs-on: windows-latest
     needs: tests-on-preprod
     steps:
-    
-      - uses: actions/checkout@v6
+      - uses: ./.github/Actions/Deploy
+        with:
+          env: 'prod'
+          port: '7004'
       - name: Run a one-line script
         run: echo "to prod"
   Tests-on-prod:
@@ -90,14 +101,12 @@ jobs:
     needs: deploy-to-prod
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/Actions/Deploy
+      - uses: ./.github/Actions/Test
         with:
-          env: 'preprod'
-          port: '7003'
+          env: 'prod'
       - name: Run a one-line script
         run: echo "test prod"
  
-  
 
 
     
