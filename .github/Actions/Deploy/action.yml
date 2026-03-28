@@ -11,12 +11,12 @@ runs:
     - uses: actions/checkout@v6
       with:
         repository: 'mtararujs/python-greetings'
-        path: 'deps'
+        path: 'depl'
     - name: Delete
-      working-directory: ./deps
+      working-directory: ./depl
       run: pm2 delete greetings-app-${{ inputs.enviroment }} & set "errorlevel=0"
       shell: pwsh
     - name: Start
-      working-directory: ./deps
+      working-directory: ./depl
       run: pm2 start -n greetings-app-${{ inputs.enviroment }} app.py -- -- ${{ inputs.port }}
       shell: pwsh
