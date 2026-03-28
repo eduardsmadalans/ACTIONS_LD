@@ -10,12 +10,12 @@ runs:
     - name: Python
       working-directory: ./deps
       run: python3 -m venv venv
-      shell: cmd
+      shell: pwsh
     - name: Python2
       working-directory: ./deps
-      run: venv\Scripts\activate
-      shell: cmd
+      run: .\\venv\\bin\\Activate.ps1
+      shell: pwsh
     - name: Python3
       working-directory: ./deps
       run: pip install -r requirements.txt
-      shell: cmd
+      shell: pwsh
