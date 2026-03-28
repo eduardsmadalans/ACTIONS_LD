@@ -13,7 +13,7 @@ runs:
       shell: pwsh
     - name: Python1
       working-directory: ./deps
-      run: "$Env:GITHUB_WORKSPACE/deps/venv/bin/python -m pip install -r $Env:GITHUB_WORKSPACE/depl/requirements.txt"
+      run: .venv/bin/python -m pip install -r requirements.txt
       shell: pwsh
     # - name: Python2
     #   working-directory: ./deps
