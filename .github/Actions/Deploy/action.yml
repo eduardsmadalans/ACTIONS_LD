@@ -12,9 +12,12 @@ runs:
       with:
         repository: 'mtararujs/python-greetings'
         path: 'depl'
-    - name: Delete/Start
+    - name: Delete
       working-directory: ./depl
-      run: | 
-        pm2 delete greetings-app-${{ inputs.enviroment }}; exit 0
-        pm2 start -n greetings-app-${{ inputs.enviroment }} app.py -- -- ${{ inputs.port }}
+      run: pm2 delete greetings-app-${{ inputs.enviroment }}; exit 0
       shell: powershell
+    - name: Start
+      working-directory: ./depl
+      run: pm2 start -n greetings-app-${{ inputs.enviroment }} app.py -- -- ${{ inputs.port }}
+      shell: powershell
+    
