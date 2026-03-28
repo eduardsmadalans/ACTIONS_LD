@@ -6,8 +6,8 @@ runs:
     - uses: actions/checkout@v6
       with:
         repository: 'mtararujs/python-greetings'
-        path: 'deps'
         clean: 'false'
+        path: 'deps'
     - name: Python
       working-directory: ./deps
       run: python3 -m venv venv
