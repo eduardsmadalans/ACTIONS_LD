@@ -13,7 +13,5 @@ runs:
       shell: pwsh
     - name: Python2
       working-directory: ./deps
-      run: | 
-        $PYTHON = "..\deps\venv\bin\python"
-        $PYTHON -m pip install -r requirements.txt
+      run: .\venv\bin\python -m pip install -r requirements.txt
       shell: pwsh
