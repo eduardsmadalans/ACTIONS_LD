@@ -20,6 +20,6 @@ runs:
       shell: pwsh
     - name: Start
       working-directory: ./depl
-      run: pm2 start ../deps/venv/bin/python.exe --name greetings-app-${{ inputs.enviroment }} -- app.py
+      run: pm2 start ../deps/venv/bin/python.exe --name greetings-app-${{ inputs.enviroment }} -- app.py ${{ inputs.port }}
       #-- -- ${{ inputs.port }}
       shell: pwsh
