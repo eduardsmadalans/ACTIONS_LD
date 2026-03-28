@@ -9,6 +9,7 @@ runs:
     - uses: actions/checkout@v6
       with:
         repository: 'mtararujs/course-js-api-framework'
+        clean: 'false'
         path: 'to'
     - name: test install
       working-directory: ./to
