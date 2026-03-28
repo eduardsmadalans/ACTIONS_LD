@@ -11,7 +11,11 @@ runs:
       working-directory: ./deps
       run: python3 -m venv venv
       shell: pwsh
+    - name: Python1
+      working-directory: ./deps
+      run: venv\Scripts\Activate.ps1
+      shell: pwsh
     - name: Python2
       working-directory: ./deps
-      run: .\venv\bin\python -m pip install -r requirements.txt
+      run: pip install -r requirements.txt
       shell: pwsh
