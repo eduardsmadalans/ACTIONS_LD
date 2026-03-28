@@ -12,6 +12,7 @@ runs:
       with:
         repository: 'mtararujs/python-greetings'
         path: 'depl'
+        clean: 'false'
     - name: Delete
       working-directory: ./depl
       run: pm2 delete greetings-app-${{ inputs.enviroment }}  & set "errorlevel=0"
