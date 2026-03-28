@@ -11,7 +11,7 @@ runs:
     - uses: actions/checkout@v6
       with:
         repository: 'mtararujs/python-greetings'
-        path: 'depls'
+        path: 'depl'
     - name: Delete
       working-directory: ./depl
       run: pm2 delete greetings-app-${{ inputs.enviroment }}; exit 0
