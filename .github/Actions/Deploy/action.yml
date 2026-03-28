@@ -14,7 +14,7 @@ runs:
         path: 'deps'
     - name: Delete
       working-directory: ./deps
-      run: pm2 delete greetings-app-${{ inputs.enviroment }} & set "errorlevel=0"
+      run: pm2 delete greetings-app-${{ inputs.enviroment }} -ErrorAction SilentlyContinue
       shell: pwsh
     - name: Start
       working-directory: ./deps
