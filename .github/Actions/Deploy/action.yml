@@ -14,8 +14,9 @@ runs:
         path: 'depl'
     - name: Delete
       working-directory: ./depl
-      run: | 
-        pm2 delete greetings-app-${{ inputs.enviroment }}; exit 0
-        pm2 start -n greetings-app-${{ inputs.enviroment }} app.py -- -- ${{ inputs.port }}
-      shell: powershell
-    
+      run: pm2 delete greetings-app-${{ inputs.enviroment }}; exit 0
+      shell: pwsh
+    - name: Start
+      working-directory: ./depl
+      run: pm2 start -n greetings-app-${{ inputs.enviroment }} app.py -- -- ${{ inputs.port }}
+      shell: pwsh
