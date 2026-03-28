@@ -15,7 +15,7 @@ jobs:
   install-pip-deps:
     runs-on: self-hosted
     steps:
-      #- uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - uses: ./.github/Actions/Build
       
 
@@ -24,7 +24,7 @@ jobs:
     runs-on: self-hosted
     needs: install-pip-deps
     steps:
-      #- uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - uses: ./.github/Actions/Deploy
         with:
           enviroment: 'dev'
@@ -36,7 +36,7 @@ jobs:
     runs-on: self-hosted
     needs: deploy-to-dev
     steps:
-      #- uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - uses: ./.github/Actions/Test
         with:
           enviroment: 'dev'
@@ -47,7 +47,7 @@ jobs:
     needs: tests-on-dev
     #needs: deploy-to-dev
     steps:
-     # - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - uses: ./.github/Actions/Deploy
         with:
           enviroment: 'stg'
@@ -62,7 +62,7 @@ jobs:
       - uses: ./.github/Actions/Test
         with:
           enviroment: 'stg'
-      #- uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: Run a one-line script
         run: echo "test stg"
   deploy-to-preprod:
@@ -70,7 +70,7 @@ jobs:
     needs: tests-on-stg
     #needs: deploy-to-stg
     steps:
-     # - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - uses: ./.github/Actions/Deploy
         with:
           enviroment: 'preprod'
@@ -81,7 +81,7 @@ jobs:
     runs-on: self-hosted
     needs: deploy-to-preprod
     steps:
-      #- uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - uses: ./.github/Actions/Test
         with:
           enviroment: 'preprod'
@@ -91,7 +91,6 @@ jobs:
   deploy-to-prod:
     runs-on: self-hosted
     needs: tests-on-preprod
-    #needs: deploy-to-preprod
     steps:
       - uses: ./.github/Actions/Deploy
         with:
@@ -103,7 +102,7 @@ jobs:
     runs-on: self-hosted
     needs: deploy-to-prod
     steps:
-      #- uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - uses: ./.github/Actions/Test
         with:
           enviroment: 'prod'
