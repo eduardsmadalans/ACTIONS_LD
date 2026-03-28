@@ -21,7 +21,7 @@ runs:
     - name: Start
       working-directory: ./depl
     
-      run:  pm2 start app.py --name greetings-app-${{ inputs.enviroment }} --interpreter ../deps/venv/bin/python.exe --${{inputs.port}}
+      run:  pm2 start app.py --name greetings-app-${{ inputs.enviroment }} --interpreter ../deps/venv/bin/python.exe -- ${{inputs.port}}
       #-- -- port ${{ inputs.port }}
       #-- -- ${{ inputs.port }}
       shell: pwsh
