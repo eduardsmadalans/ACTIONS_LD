@@ -12,7 +12,10 @@ runs:
         path: 'to'
     - name: test install
       working-directory: ./to
-      run: |
-        npm install
-        npm run greetings greetings_${{ inputs.enviroment }}
-      shell: powershell
+      run: npm install
+      shell: pwsh
+
+    - name: greetings
+      working-directory: ./to
+      run: npm run greetings greetings_${{ inputs.enviroment }}
+      shell: pwsh
