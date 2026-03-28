@@ -13,7 +13,7 @@ runs:
       shell: cmd
     - name: Python2
       working-directory: ./deps
-      run: .\\venv\\bin\\Activate.ps1
+      run: \venv\bin\Activate
       shell: cmd
     - name: Python3
       working-directory: ./deps
