@@ -18,5 +18,5 @@ runs:
       shell: pwsh
     - name: Start
       working-directory: ./depl
-      run: pm2 start -n greetings-app-${{ inputs.enviroment }} .\venv\Scripts\python app.py -- ${{ inputs.port }}
+      run: pm2 start -n greetings-app-${{ inputs.enviroment }} $PYTHON app.py -- ${{ inputs.port }}
       shell: pwsh
