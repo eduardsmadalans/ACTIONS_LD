@@ -15,12 +15,12 @@ runs:
     - name: test install
       working-directory: ./depl
       run: npm install -g pm2
-      shell: cmd
+      shell: powershell
     - name: Delete
       working-directory: ./depl
       run: pm2 delete greetings-app-${{ inputs.enviroment }} & EXIT /B 0
-      shell: cmd
+      shell: powershell
     - name: Start
       working-directory: ./depl
       run: pm2 start -n greetings-app-${{ inputs.enviroment }} app.py -- -- ${{ inputs.port }}
-      shell: cmd
+      shell: powershell
