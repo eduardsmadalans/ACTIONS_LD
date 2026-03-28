@@ -16,5 +16,5 @@ runs:
       shell: powershell
     - name: test test
       working-directory: ./to
-      run: npm run greetings greetings_${{ inputs.enviroment }}
+      run: npm run greetings -- greetings_${{ inputs.enviroment }}
       shell: cmd
