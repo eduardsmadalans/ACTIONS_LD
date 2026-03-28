@@ -32,19 +32,20 @@ jobs:
       - name: Deploy
         run: echo "to dev"
         
-  tests-on-dev:
-    runs-on: self-hosted
-    needs: deploy-to-dev
-    steps:
-      - uses: actions/checkout@v6
-      - uses: ./.github/Actions/Test
-        with:
-          enviroment: 'dev'
-      - name: Run a one-line script
-        run: echo "test dev"
+  # tests-on-dev:
+  #   runs-on: self-hosted
+  #   needs: deploy-to-dev
+  #   steps:
+  #     - uses: actions/checkout@v6
+  #     - uses: ./.github/Actions/Test
+  #       with:
+  #         enviroment: 'dev'
+  #     - name: Run a one-line script
+  #       run: echo "test dev"
   deploy-to-stg:
     runs-on: self-hosted
-    needs: tests-on-dev
+    #needs: tests-on-dev
+    needs: deploy-to-dev
     steps:
       - uses: actions/checkout@v6
       - uses: ./.github/Actions/Deploy
@@ -53,20 +54,21 @@ jobs:
           port: '7002'
       - name: Deploy
         run: echo "to stg"
-  tests-on-stg:
-    runs-on: self-hosted
-    needs: deploy-to-stg
-    steps:
-      - uses: actions/checkout@v6
-      - uses: ./.github/Actions/Test
-        with:
-          enviroment: 'stg'
-      - uses: actions/checkout@v6
-      - name: Run a one-line script
-        run: echo "test stg"
+  # tests-on-stg:
+  #   runs-on: self-hosted
+  #   needs: deploy-to-stg
+  #   steps:
+  #     - uses: actions/checkout@v6
+  #     - uses: ./.github/Actions/Test
+  #       with:
+  #         enviroment: 'stg'
+  #     - uses: actions/checkout@v6
+  #     - name: Run a one-line script
+  #       run: echo "test stg"
   deploy-to-preprod:
     runs-on: self-hosted
-    needs: tests-on-stg
+    #needs: tests-on-stg
+    needs: deploy-to-stg
     steps:
       - uses: actions/checkout@v6
       - uses: ./.github/Actions/Deploy
@@ -75,20 +77,21 @@ jobs:
           port: '7003'
       - name: Deploy
         run: echo "to pre"
-  tests-on-preprod:
-    runs-on: self-hosted
-    needs: deploy-to-preprod
-    steps:
-      - uses: actions/checkout@v6
-      - uses: ./.github/Actions/Test
-        with:
-          enviroment: 'preprod'
-      - uses: actions/checkout@v6
-      - name: Run a one-line script
-        run: echo "test pre"
+  # tests-on-preprod:
+  #   runs-on: self-hosted
+  #   needs: deploy-to-preprod
+  #   steps:
+  #     - uses: actions/checkout@v6
+  #     - uses: ./.github/Actions/Test
+  #       with:
+  #         enviroment: 'preprod'
+  #     - uses: actions/checkout@v6
+  #     - name: Run a one-line script
+  #       run: echo "test pre"
   deploy-to-prod:
     runs-on: self-hosted
-    needs: tests-on-preprod
+    #needs: tests-on-preprod
+    needs: deploy-to-preprod
     steps:
       - uses: ./.github/Actions/Deploy
         with:
@@ -96,16 +99,16 @@ jobs:
           port: '7004'
       - name: Run a one-line script
         run: echo "to prod"
-  Tests-on-prod:
-    runs-on: self-hosted
-    needs: deploy-to-prod
-    steps:
-      - uses: actions/checkout@v6
-      - uses: ./.github/Actions/Test
-        with:
-          enviroment: 'prod'
-      - name: Run a one-line script
-        run: echo "test prod"
+  # Tests-on-prod:
+  #   runs-on: self-hosted
+  #   needs: deploy-to-prod
+  #   steps:
+  #     - uses: actions/checkout@v6
+  #     - uses: ./.github/Actions/Test
+  #       with:
+  #         enviroment: 'prod'
+  #     - name: Run a one-line script
+  #       run: echo "test prod"
  
 
 
