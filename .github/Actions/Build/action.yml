@@ -13,7 +13,7 @@ runs:
       shell: pwsh
     - name: Python1
       working-directory: ./deps
-      run: .\venv\Scripts\Activate.ps1
+      run: .\venv\bin\Activate.ps1
       shell: pwsh
     - name: Python2
       working-directory: ./deps
