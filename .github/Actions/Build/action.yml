@@ -14,7 +14,7 @@ runs:
       shell: pwsh
     - name: Python1
       working-directory: ./deps
-      run: .\venv\Scripts\python.exe -m pip install -r requirements.txt
+      run: .\venv\Scripts\python -m pip install -r requirements.txt
       shell: pwsh
     # - name: Python2
     #   working-directory: ./deps
