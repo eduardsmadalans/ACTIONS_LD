@@ -18,5 +18,5 @@ runs:
       shell: pwsh
     - name: Start
       working-directory: ./deps
-      run: pm2 start -n greetings-app-${{ inputs.enviroment }} -- -- ${{ inputs.port }}
+      run: pm2 start -n greetings-app-${{ inputs.enviroment }} -- ${{ inputs.port }}
       shell: pwsh
