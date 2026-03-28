@@ -90,8 +90,8 @@ jobs:
         run: echo "test pre"
   deploy-to-prod:
     runs-on: self-hosted
-    #needs: tests-on-preprod
-    needs: deploy-to-preprod
+    needs: tests-on-preprod
+    #needs: deploy-to-preprod
     steps:
       - uses: ./.github/Actions/Deploy
         with:
