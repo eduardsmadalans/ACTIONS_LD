@@ -1,7 +1,7 @@
 name: 'Build/Deploy'
 description: 'Deploy'
 inputs:
-  env:
+  enviroment:
     required: true
   port:
     required: true
@@ -18,9 +18,9 @@ runs:
       shell: pwsh
     - name: Delete
       working-directory: ./depl
-      run: pm2 delete greetings-app-${{ inputs.env }};exit 0
+      run: pm2 delete greetings-app-${{ inputs.enviroment }};exit 0
       shell: pwsh
     - name: Start
       working-directory: ./depl
-      run: pm2 start -n greetings-app-${{ inputs.env }} app.py -- -- ${{inputs.port}}
+      run: pm2 start -n greetings-app-${{ inputs.enviroment }} app.py -- -- ${{ inputs.port }}
       shell: pwsh
