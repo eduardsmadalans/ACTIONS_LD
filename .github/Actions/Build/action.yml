@@ -7,6 +7,7 @@ runs:
       with:
         repository: 'mtararujs/python-greetings'
         path: 'deps'
+        clean: 'false'
     - name: Python
       working-directory: ./deps
       run: python3 -m venv venv
