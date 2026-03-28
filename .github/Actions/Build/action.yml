@@ -13,9 +13,9 @@ runs:
       shell: pwsh
     - name: Python1
       working-directory: ./deps
-      run: .\venv\bin\Activate.ps1
+      run: $Env:GITHUB_WORKSPACE\deps\venv\bin\python -m pip install -r requirements.txt
       shell: pwsh
-    - name: Python2
-      working-directory: ./deps
-      run: pip install -r requirements.txt
-      shell: pwsh
+    # - name: Python2
+    #   working-directory: ./deps
+    #   run: pip install -r requirements.txt
+    #   shell: pwsh
