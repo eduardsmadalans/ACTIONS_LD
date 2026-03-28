@@ -13,7 +13,7 @@ on:
 jobs:
 
   install-pip-deps:
-    runs-on: windows-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v6
       - uses: ./.github/Actions/Build
@@ -21,7 +21,7 @@ jobs:
 
         
   deploy-to-dev:
-    runs-on: windows-latest
+    runs-on: self-hosted
     needs: install-pip-deps
     steps:
       - uses: actions/checkout@v6
@@ -33,7 +33,7 @@ jobs:
         run: echo "to dev"
         
   tests-on-dev:
-    runs-on: windows-latest
+    runs-on: self-hosted
     needs: deploy-to-dev
     steps:
       - uses: actions/checkout@v6
@@ -43,7 +43,7 @@ jobs:
       - name: Run a one-line script
         run: echo "test dev"
   deploy-to-stg:
-    runs-on: windows-latest
+    runs-on: self-hosted
     needs: tests-on-dev
     steps:
       - uses: actions/checkout@v6
@@ -54,7 +54,7 @@ jobs:
       - name: Deploy
         run: echo "to stg"
   tests-on-stg:
-    runs-on: windows-latest
+    runs-on: self-hosted
     needs: deploy-to-stg
     steps:
       - uses: actions/checkout@v6
@@ -65,7 +65,7 @@ jobs:
       - name: Run a one-line script
         run: echo "test stg"
   deploy-to-preprod:
-    runs-on: windows-latest
+    runs-on: self-hosted
     needs: tests-on-stg
     steps:
       - uses: actions/checkout@v6
@@ -76,7 +76,7 @@ jobs:
       - name: Deploy
         run: echo "to pre"
   tests-on-preprod:
-    runs-on: windows-latest
+    runs-on: self-hosted
     needs: deploy-to-preprod
     steps:
       - uses: actions/checkout@v6
@@ -87,7 +87,7 @@ jobs:
       - name: Run a one-line script
         run: echo "test pre"
   deploy-to-prod:
-    runs-on: windows-latest
+    runs-on: self-hosted
     needs: tests-on-preprod
     steps:
       - uses: ./.github/Actions/Deploy
@@ -97,7 +97,7 @@ jobs:
       - name: Run a one-line script
         run: echo "to prod"
   Tests-on-prod:
-    runs-on: windows-latest
+    runs-on: self-hosted
     needs: deploy-to-prod
     steps:
       - uses: actions/checkout@v6
