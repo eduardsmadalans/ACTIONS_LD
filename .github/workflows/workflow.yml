@@ -15,7 +15,11 @@ jobs:
   install-pip-deps:
     runs-on: self-hosted
     steps:
-      #- uses: actions/checkout@v6
+      - uses: actions/checkout@v6
+        with:
+            repository: 'mtararujs/python-greetings'
+            clean: 'false'
+            path: 'deps'
       - uses: ./.github/Actions/Build
       
 
