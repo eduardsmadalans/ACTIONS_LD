@@ -1,7 +1,7 @@
 name: 'Build/Test'
 description: 'Test'
 inputs:
-  env:
+  enviroment:
     required: true
 runs:
   using: composite
@@ -16,5 +16,5 @@ runs:
       shell: pwsh
     - name: test test
       working-directory: ./to
-      run: npm run greetings greetings_${{inputs.env}}
+      run: npm run greetings greetings_${{ inputs.enviroment }}
       shell: pwsh
