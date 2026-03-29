@@ -10,7 +10,7 @@ runs:
   steps:
     - run: echo "Cloning repository....."
       shell: bash
-      uses: actions/checkout@v6
+    - uses: actions/checkout@v6
       with:
         repository: 'mtararujs/python-greetings'
         clean: 'false'
