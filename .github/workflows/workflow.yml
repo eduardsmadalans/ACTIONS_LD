@@ -14,7 +14,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v6
-        clean: false
+        clean: 'false'
       - uses: ./.github/Actions/Build
       
 
@@ -24,7 +24,7 @@ jobs:
     needs: install-pip-deps
     steps:
       - uses: actions/checkout@v6
-        clean: false
+        clean: 'false'
       - uses: ./.github/Actions/Deploy
         with:
           enviroment: 'dev'
@@ -37,7 +37,7 @@ jobs:
     needs: deploy-to-dev
     steps:
       - uses: actions/checkout@v6
-        clean: false
+        clean: 'false'
       - uses: ./.github/Actions/Test
         with:
           enviroment: 'dev'
@@ -48,7 +48,7 @@ jobs:
     needs: tests-on-dev
     steps:
       - uses: actions/checkout@v6
-        clean: false
+        clean: 'false'
       - uses: ./.github/Actions/Deploy
         with:
           enviroment: 'stg'
@@ -60,7 +60,7 @@ jobs:
     needs: deploy-to-stg
     steps:
       - uses: actions/checkout@v6
-        clean: false
+        clean: 'false'
       - uses: ./.github/Actions/Test
         with:
           enviroment: 'stg'
@@ -72,7 +72,7 @@ jobs:
     needs: tests-on-stg
     steps:
       - uses: actions/checkout@v6
-        clean: false
+        clean: 'false'
       - uses: ./.github/Actions/Deploy
         with:
           enviroment: 'preprod'
@@ -84,7 +84,7 @@ jobs:
     needs: deploy-to-preprod
     steps:
       - uses: actions/checkout@v6
-        clean: false
+        clean: 'false'
       - uses: ./.github/Actions/Test
         with:
           enviroment: 'preprod'
@@ -96,7 +96,7 @@ jobs:
     needs: tests-on-preprod
     steps:
       - uses: actions/checkout@v6
-        clean: false
+        clean: 'false'
       - uses: ./.github/Actions/Deploy
         with:
           enviroment: 'prod'
@@ -108,7 +108,7 @@ jobs:
     needs: deploy-to-prod
     steps:
       - uses: actions/checkout@v6
-        clean: false
+        clean: 'false'
       - uses: ./.github/Actions/Test
         with:
           enviroment: 'prod'
