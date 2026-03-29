@@ -52,7 +52,7 @@ jobs:
     runs-on: self-hosted
     needs: tests-on-dev
     steps:
-      - run: echo: "Deploying to staging......"
+      - run: echo "Deploying to staging......"
       - uses: actions/checkout@v6
         with:
           clean: 'false'
