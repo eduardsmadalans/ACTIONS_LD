@@ -16,12 +16,10 @@ runs:
         
     - name: Delete
       working-directory: ./depl
-      run: pm2 delete greetings-app-${{ inputs.enviroment }}  & set "errorlevel=0"
-      shell: pwsh
+      run: pm2 delete greetings-app-${{ inputs.enviroment }} || true"
+      shell: bash
     - name: Start
       working-directory: ./depl
     
       run:  pm2 start app.py --name greetings-app-${{ inputs.enviroment }} --interpreter ../venv/bin/python.exe -- -- ${{inputs.port}}
-      #-- -- port ${{ inputs.port }}
-      #-- -- ${{ inputs.port }}
-      shell: pwsh
+      shell: bash
