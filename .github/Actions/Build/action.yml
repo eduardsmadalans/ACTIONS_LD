@@ -19,7 +19,7 @@ runs:
       run: ./venv/bin/python -m pip install -r requirements.txt
       shell: bash
 
-    - name: Enviroment activation:
+    - name: Enviroment activation
       working-directory: ./deps
       run: source ./venv/bin/activate
       shell: bash
