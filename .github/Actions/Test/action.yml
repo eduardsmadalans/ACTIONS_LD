@@ -14,9 +14,9 @@ runs:
     - name: test install
       working-directory: ./to
       run: npm install
-      shell: pwsh
+      shell: bash
 
     - name: greetings
       working-directory: ./to
       run: npm run greetings greetings_${{ inputs.enviroment }}
-      shell: pwsh
+      shell: bash
