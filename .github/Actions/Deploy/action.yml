@@ -21,5 +21,5 @@ runs:
     
     - name: Start
       working-directory: ./depl
-      run:  pm2 start app.py --name python-greetings --interpreter /venv/bin/python -- --port ${{inputs.port}}
+      run:  pm2 start app.py --name python-greetings_${{ inputs.enviroment }} -- -- port ${{inputs.port}}
       shell: bash
