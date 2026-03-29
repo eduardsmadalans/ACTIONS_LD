@@ -11,6 +11,7 @@ jobs:
   install-pip-deps:
     runs-on: self-hosted
     steps:
+      - run: echo "Installing dependencies...."
       - uses: actions/checkout@v6
         with:
           clean: 'false'
@@ -22,6 +23,7 @@ jobs:
     runs-on: self-hosted
     needs: install-pip-deps
     steps:
+      - run: echo "Deploying to development......"
       - uses: actions/checkout@v6
         with:
           clean: 'false'
@@ -36,6 +38,7 @@ jobs:
     runs-on: self-hosted
     needs: deploy-to-dev
     steps:
+      - run: echo "Testing on development......"
       - uses: actions/checkout@v6
         with:
           clean: 'false'
@@ -44,10 +47,12 @@ jobs:
           enviroment: 'dev'
       - name: Run a one-line script
         run: echo "test dev"
+
   deploy-to-stg:
     runs-on: self-hosted
     needs: tests-on-dev
     steps:
+      - run: echo: "Deploying to staging......"
       - uses: actions/checkout@v6
         with:
           clean: 'false'
@@ -61,6 +66,7 @@ jobs:
     runs-on: self-hosted
     needs: deploy-to-stg
     steps:
+      - echo: "Testing on staging enviroment......"
       - uses: actions/checkout@v6
         with:
           clean: 'false'
@@ -69,10 +75,12 @@ jobs:
           enviroment: 'stg'
       - name: Run a one-line script
         run: echo "test stg"
+
   deploy-to-preprod:
     runs-on: self-hosted
     needs: tests-on-stg
     steps:
+      - run: echo "Deploying to pre-production......"
       - uses: actions/checkout@v6
         with:
           clean: 'false'
@@ -82,10 +90,12 @@ jobs:
           port: '7003'
       - name: Deploy
         run: echo "to pre"
+
   tests-on-preprod:
     runs-on: self-hosted
     needs: deploy-to-preprod
     steps:
+      - run: echo "Deploying to pre-production......"
       - uses: actions/checkout@v6
         with:
           clean: 'false'
@@ -94,10 +104,12 @@ jobs:
           enviroment: 'preprod'
       - name: Run a one-line script
         run: echo "test pre"
+
   deploy-to-prod:
     runs-on: self-hosted
     needs: tests-on-preprod
     steps:
+      - run: echo "Deploying to production......"
       - uses: actions/checkout@v6
         with:
           clean: 'false'
@@ -107,10 +119,12 @@ jobs:
           port: '7004'
       - name: Run a one-line script
         run: echo "to prod"
+
   Tests-on-prod:
     runs-on: self-hosted
     needs: deploy-to-prod
     steps:
+      - run: echo "Testing on production......"
       - uses: actions/checkout@v6
         with:
           clean: 'false'
