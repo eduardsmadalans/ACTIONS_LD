@@ -18,8 +18,12 @@ runs:
       working-directory: ./depl
       run: pm2 delete greetings-app-${{ inputs.enviroment }} || true
       shell: bash
+    - name: test
+      working-directory: ./depl
+      run: pwd
+      shell: bash
     - name: Start
       working-directory: ./depl
-    
+  
       run:  pm2 start app.py --name python-greetings --interpreter ./deps/venv/bin/python -- --port ${{inputs.port}}
       shell: bash
