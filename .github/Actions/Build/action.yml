@@ -4,14 +4,15 @@ runs:
   using: composite
   steps:
     - run: echo "Cloning repository..."
+      shell: bash
     - uses: actions/checkout@v6
       with:
         repository: 'mtararujs/python-greetings'
         clean: 'false'
         path: 'deps'
         
-
     - run: echo "Installing Python virtual enviroment....."
+      shell: bash
     - name: Python venv
       working-directory: ./deps
       run: python3 -m venv venv
