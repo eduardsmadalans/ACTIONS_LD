@@ -21,5 +21,5 @@ runs:
 
     - name: Enviroment activation
       working-directory: ./deps
-      run: source /venv/bin/activate
+      run: source ./venv/bin/activate
       shell: bash
