@@ -3,18 +3,21 @@ description: 'dependencies'
 runs:
   using: composite
   steps:
+    - run: echo "Cloning repository..."
     - uses: actions/checkout@v6
       with:
         repository: 'mtararujs/python-greetings'
         clean: 'false'
         path: 'deps'
         
-    - name: Python
+
+    - run: echo "Installing Python virtual enviroment....."
+    - name: Python venv
       working-directory: ./deps
       run: python3 -m venv venv
       shell: bash
 
-    - name: Python1
+    - name: Python dependencies
       working-directory: ./deps
       run: ./venv/bin/python -m pip install -r requirements.txt
       shell: bash

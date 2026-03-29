@@ -1,5 +1,5 @@
-name: 'Build/Deploy'
-description: 'Deploy'
+name: 'Deploy'
+description: 'Deployment'
 inputs:
   enviroment:
     required: true
@@ -9,6 +9,7 @@ runs:
   using: composite
   steps:
     - uses: actions/checkout@v6
+    - run: echo "Cloning repository....."
       with:
         repository: 'mtararujs/python-greetings'
         clean: 'false'
@@ -19,7 +20,8 @@ runs:
       run: pm2 delete greetings-app-${{inputs.enviroment}} || true
       shell: bash
     
-    - name: Start
+    - name: Process start 
+    - run: echo "Starting process....."
       working-directory: ./depl
       run:  'pm2 start app.py --name "greetings-app-${{inputs.enviroment}}" --interpreter $GITHUB_WORKSPACE/deps/venv/bin/python -- --port ${{inputs.port}}'
       shell: bash

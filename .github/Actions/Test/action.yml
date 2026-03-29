@@ -1,5 +1,5 @@
-name: 'Build/Test'
-description: 'Test'
+name: 'Test'
+description: 'Testing'
 inputs:
   enviroment:
     required: true
@@ -11,12 +11,15 @@ runs:
         repository: 'mtararujs/course-js-api-framework'
         clean: 'false'
         path: 'to'
-    - name: test install
+
+    - name: test Dependency
+    - run: echo "Installing test dependency"
       working-directory: ./to
       run: npm install
       shell: bash
 
     - name: greetings
+    - run: echo "Access to API"
       working-directory: ./to
       run: npm run greetings greetings_${{ inputs.enviroment }}
       shell: bash
