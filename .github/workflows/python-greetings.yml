@@ -62,11 +62,12 @@ jobs:
           port: '7002'
       - name: Deploy
         run: echo "to stg"
+      
   tests-on-stg:
     runs-on: self-hosted
     needs: deploy-to-stg
     steps:
-      - echo: "Testing on staging enviroment......"
+      - run: echo "Testing on staging enviroment......"
       - uses: actions/checkout@v6
         with:
           clean: 'false'
