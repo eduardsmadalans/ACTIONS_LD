@@ -16,10 +16,10 @@ runs:
         
     - name: Delete process if there was one
       working-directory: ./depl
-      run: pm2 delete greetings-app-${{ inputs.enviroment }} || true
+      run: pm2 delete greetings-app-${{inputs.enviroment}} || true
       shell: bash
     
     - name: Start
       working-directory: ./depl
-      run:  pm2 start app.py --name greetings-app-${{ inputs.enviroment }} --interpreter $GITHUB_WORKSPACE/deps/venv/bin/python -- --port ${{inputs.port}}
+      run:  pm2 start app.py --name greetings-app-${{inputs.enviroment}} --interpreter $GITHUB_WORKSPACE/deps/venv/bin/python -- --port ${{inputs.port}}
       shell: bash
