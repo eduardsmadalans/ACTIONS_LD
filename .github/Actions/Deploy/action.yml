@@ -8,8 +8,9 @@ inputs:
 runs: 
   using: composite
   steps:
-    - uses: actions/checkout@v6
     - run: echo "Cloning repository....."
+      shell: bash
+      uses: actions/checkout@v6
       with:
         repository: 'mtararujs/python-greetings'
         clean: 'false'
@@ -21,7 +22,6 @@ runs:
       shell: bash
     
     - name: Process start 
-    - run: echo "Starting process....."
       working-directory: ./depl
-      run:  'pm2 start app.py --name "greetings-app-${{inputs.enviroment}}" --interpreter $GITHUB_WORKSPACE/deps/venv/bin/python -- --port ${{inputs.port}}'
+      run: 'pm2 start app.py --name "greetings-app-${{inputs.enviroment}}" --interpreter $GITHUB_WORKSPACE/deps/venv/bin/python -- --port ${{inputs.port}}'
       shell: bash
