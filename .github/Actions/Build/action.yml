@@ -11,12 +11,9 @@ runs:
     - name: Python
       working-directory: ./deps
       run: python3 -m venv venv
-      shell: pwsh
+      shell: bash
     - name: Python1
       working-directory: ./deps
-      run: .\venv\bin\python -m pip install -r requirements.txt
-      shell: pwsh
-    # - name: Python2
-    #   working-directory: ./deps
-    #   run: pip install -r requirements.txt
-    #   shell: pwsh
+      run: ./venv/bin/python -m pip install -r requirements.txt
+      shell: bash
+
