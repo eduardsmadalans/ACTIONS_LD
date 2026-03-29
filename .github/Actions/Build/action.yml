@@ -8,12 +8,18 @@ runs:
         repository: 'mtararujs/python-greetings'
         clean: 'false'
         path: 'deps'
+        
     - name: Python
       working-directory: ./deps
       run: python3 -m venv venv
       shell: bash
+
     - name: Python1
       working-directory: ./deps
       run: ./venv/bin/python -m pip install -r requirements.txt
       shell: bash
 
+    - name: Enviroment activation:
+      working-directory: ./deps
+      run: source ./venv/bin/activate
+      shell: bash
