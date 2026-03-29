@@ -15,7 +15,6 @@ runs:
     - run: echo "Installing test dependency"
       shell: bash
     - name: test Dependency
-      run: echo "Installing test dependency"
       working-directory: ./to
       run: npm install
       shell: bash
