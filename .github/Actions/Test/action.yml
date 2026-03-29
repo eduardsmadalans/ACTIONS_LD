@@ -12,14 +12,15 @@ runs:
         clean: 'false'
         path: 'to'
 
-    - name: test Dependency
     - run: echo "Installing test dependency"
+    - name: test Dependency
+      run: echo "Installing test dependency"
       working-directory: ./to
       run: npm install
       shell: bash
-
-    - name: greetings
+      
     - run: echo "Access to API"
+    - name: greetings
       working-directory: ./to
       run: npm run greetings greetings_${{ inputs.enviroment }}
       shell: bash
