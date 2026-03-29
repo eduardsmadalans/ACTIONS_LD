@@ -94,7 +94,6 @@ jobs:
       - uses: ./.github/Actions/Test
         with:
           enviroment: 'preprod'
-      - uses: actions/checkout@v6
       - name: Run a one-line script
         run: echo "test pre"
   deploy-to-prod:
